@@ -33,6 +33,6 @@ RUN /tmp/setup_container.sh
 USER oracle
 
 ADD install /tmp
-ADD install_java.sh /home/oracle
+ADD install_java.sh /tmp
 
-RUN /home/oracle/install_java.sh
+RUN /tmp/install_java.sh
