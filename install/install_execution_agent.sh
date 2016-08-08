@@ -23,8 +23,26 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-groupadd dba
-useradd -d /home/oracle -g dba -m -s /bin/bash oracle
+JAVA_HOME=$HOME/jdk8
 
-yum -y update
-yum -y install tar
+echo Loading properties
+. $HOME/ics.conf
+
+echo Extracting and installing ICS Execution Agent
+cd /tmp
+
+unzip /tmp/ics_exec_agent_installer_*.zip -d /tmp
+chmod u+x /tmp/ics-executionagent-installer.bsx
+/tmp/ics-executionagent-installer.bsx <<EOF
+$ICS_URL
+$ICS_USERNAME
+$ICS_PASSWORD
+
+
+$AGENT_NAME
+/home/oracle/icsea
+oracle
+dba
+$AGENT_PASSWORD
+JavaDB
+EOF

@@ -1,4 +1,5 @@
-# Copyright (c) 2016, ninckblokje
+#!/bin/bash
+
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -22,18 +23,12 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-FROM oraclelinux:6.8
+groupadd dba
+useradd -d /home/oracle -g dba -G wheel -m -s /bin/bash oracle
 
-MAINTAINER ninckblokje
+yum -y update
+yum -y install tar unzip sudo
 
-ADD install /tmp
+echo '%wheel ALL=(ALL)       NOPASSWD: ALL' >> /etc/sudoers
 
-RUN /tmp/setup_container.sh
-
-USER oracle
-
-ADD ics.conf /home/oracle
-
-RUN /tmp/install_execution_agent.sh
-
-#ENTRYPOINT /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh
+chmod -R 777 /tmp
