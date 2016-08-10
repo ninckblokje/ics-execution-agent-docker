@@ -1,3 +1,4 @@
-ics_exec_agent_installer_*.*.zip
-jdk-8u*-linux-x64.tar.gz
+*.gz
+*.jar
+*.zip
 ics.conf

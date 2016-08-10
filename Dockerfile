@@ -27,6 +27,7 @@ FROM oraclelinux:6.8
 MAINTAINER ninckblokje
 
 ADD install /tmp
+ADD tmp /tmp/ICSOPInstall/tmp/
 
 RUN /tmp/setup_container.sh
 
@@ -36,4 +37,4 @@ ADD ics.conf /home/oracle
 
 RUN /tmp/install_execution_agent.sh
 
-#ENTRYPOINT /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh
+ENTRYPOINT /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh
