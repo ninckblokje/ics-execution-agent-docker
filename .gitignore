@@ -1,4 +1,10 @@
 *.gz
 *.jar
+*.loc
+*.log
+*.rsp
+*.temp
+*.tmp
 *.zip
 ics.conf
+OraInstall*

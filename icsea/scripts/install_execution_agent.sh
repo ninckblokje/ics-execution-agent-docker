@@ -23,24 +23,28 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-JAVA_HOME=$HOME/jdk8
+INSTALL_DIR=/tmp/icsea
+INSTALL_FILES_DIR=/tmp/files
+TARGET_DIR=/home/oracle/icsea
+
+sudo chmod -R 777 /tmp
 
 echo Loading properties
 . $HOME/ics.conf
 
 echo Extracting and installing ICS Execution Agent
-cd /tmp
+unzip $INSTALL_FILES_DIR/ics_exec_agent_installer_*.zip -d $INSTALL_DIR
 
-unzip /tmp/ics_exec_agent_installer_*.zip -d /tmp
-chmod u+x /tmp/ics-executionagent-installer.bsx
-/tmp/ics-executionagent-installer.bsx <<EOF
+cd $INSTALL_DIR
+chmod u+x $INSTALL_DIR/ics-executionagent-installer.bsx
+$INSTALL_DIR/ics-executionagent-installer.bsx <<EOF
 $ICS_URL
 $ICS_USERNAME
 $ICS_PASSWORD
 
 
 $AGENT_NAME
-/home/oracle/icsea
+$TARGET_DIR
 oracle
 dba
 $AGENT_PASSWORD

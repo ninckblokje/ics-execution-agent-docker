@@ -1,5 +1,4 @@
-#!/bin/bash
-
+# Copyright (c) 2016, ninckblokje
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -23,12 +22,10 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-groupadd dba
-useradd -d /home/oracle -g dba -G wheel -m -s /bin/bash oracle
+ICS_URL=https://[IDENTITY_DOMAIN].integration.[DATE_CENTRE].oraclecloud.com:443/ics
+ICS_USERNAME=[USERNAME]
+ICS_PASSWORD=[PASSWORD]
 
-yum -y update
-yum -y install tar unzip sudo
-
-echo '%wheel ALL=(ALL)       NOPASSWD: ALL' >> /etc/sudoers
-
-chmod -R 777 /tmp
+AGENT_NAME=[AGENT_NAME]
+AGENT_GROUP=EXECUTION_AGENT_GROUP
+AGENT_PASSWORD=[AGENT_PASSWORD]

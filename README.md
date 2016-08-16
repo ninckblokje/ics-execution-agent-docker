@@ -10,10 +10,11 @@ The Docker image is based upon Oracle Linux 6.8 and will install **sudo**, **tar
 
 - assets
   - Contains images for **README.md**
-- install
-  - Contains the installation scripting
+- files
   - The main setup file should be put here
-- tmp
+- iscea
+  - The Docker configuration and install scripts are stored here
+- temp_files
   - Can optionally store the other files to speedup the build process, otherwise these will be downloaded by the main setup file
 
 ## Download Execution Agent
@@ -27,6 +28,8 @@ The Execution Agent can be downloaden from within the Integration Cloud:
 5. Click on the button **Download Agent Installer** and select **Execution Agent**
 
 ![Download Execution Agent](assets/download_icsea.png)
+
+## Configuration
 
 ## Build instructions
 
