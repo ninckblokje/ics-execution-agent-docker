@@ -28,6 +28,7 @@ INSTALL_FILES_DIR=/tmp/files
 TARGET_DIR=/home/oracle/icsea
 
 sudo chmod -R 777 /tmp
+sudo chown -R oracle:dba $INSTALL_DIR
 
 echo Loading properties
 . $HOME/ics.conf
