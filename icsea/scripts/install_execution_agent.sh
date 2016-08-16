@@ -51,3 +51,5 @@ dba
 $AGENT_PASSWORD
 JavaDB
 EOF
+
+/home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/stopWebLogic.sh

@@ -31,8 +31,6 @@ RUN /tmp/scripts/setup_container.sh
 
 USER oracle
 
-ADD ics.conf /home/oracle
-
 EXPOSE 5004 7001 7002 7453
 
 #RUN /tmp/install_execution_agent.sh

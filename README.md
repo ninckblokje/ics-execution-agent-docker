@@ -6,10 +6,15 @@ During the creation of the Docker image to the main setup file is executed and w
 
 The Docker image is based upon Oracle Linux 6.8 and will install **sudo**, **tar** and **unzip**. The software will run as user **oracle**, which can execute commands as user **root** through **sudo** without a password!
 
+I doubt that Oracle will support the Docker container :)
+
 ## Folder structure
 
 - assets
   - Contains images for **README.md**
+- config
+  - Should contain the **ics.conf** file
+  - Contains an example file **ics.conf.example**
 - files
   - The main setup file should be put here
 - iscea
@@ -31,9 +36,28 @@ The Execution Agent can be downloaden from within the Integration Cloud:
 
 ## Configuration
 
+Create the file **ics.conf** based upon the file **ics.conf.example** in the **config** folder. Set the following properties:
 
+- ICS_URL
+  - Configure the identity domain and data centre
+- ICS_USERNAME
+  - The ICS username
+- ICS_PASSWORD
+  - The corresponding ICS password
+- AGENT_NAME
+  - The name for the execution agent
+- AGENT_PASSWORD
+  - The password for the execution agent
 
 ## Build instructions
+
+If you build the Docker image on Windows make sure that the Docker VM has 5 GB or more RAM!
+
+On Windows a PowerShell script will build the container:
+
+    $ .\Build-DockerContainer.ps1 
+
+## Run the container
 
 
 

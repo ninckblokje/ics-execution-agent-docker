@@ -20,8 +20,8 @@ Foreach-Object {
 }
 
 Write-Host Building image
-docker build -t ninckblokje/icsea-ph1:$ImageVersion icsea
+docker build -t ninckblokje/icsea-base:$ImageVersion icsea
 
 Write-Host Running install
 
-Invoke-Expression "docker run -it -v /dev/urandom:/dev/random -v /$DockerPwd/files:/tmp/files $TempFileVolumes ninckblokje/icsea-ph1:$ImageVersion bash"
+Invoke-Expression "docker run -it -v /$DockerPwd/config/ics.conf:/home/oracle/ics.conf -v /dev/urandom:/dev/random -v /$DockerPwd/files:/tmp/files $TempFileVolumes ninckblokje/icsea-base:$ImageVersion /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh"
