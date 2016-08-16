@@ -31,8 +31,30 @@ The Execution Agent can be downloaden from within the Integration Cloud:
 
 ## Configuration
 
+
+
 ## Build instructions
 
 
 
 ## Save install files
+
+To save time it is possible to provide the install files manually. Normally the main setup file will download these files, but it is possible to copy them out of the container. Put them in the **temp_files** folder. During the next build this folder is mounted and the main setup file will not download these files, but will use these files.
+
+The following files can be stored here:
+
+- 0.160506.1920_jdk-7u55-fcs-bin-b13-linux-x64-17_mar_2014.tar.gz
+- 0.160506.1920_wls_jrf_generic.jar
+- ics_generic.jar (not sure)
+- ics_generic.zip
+- wlspatches.zip
+
+To copy the files out of the container use this command:
+
+    $ docker cp [CONTAINER]:/tmp/icsea/ICSOPInstall/tmp/[FILE] [PWD]/temp_files/[FILE]
+
+## Random number generator
+
+WebLogic requires a large number of entropy from **/dev/random**. If it runs out of entropy then WebLogic becomes very very slow. To fix this either the **rng** daemon can be used, but on a Docker container that is quite hard since the kernel from the host system is used. To fix this **/dev/urandom** is mounted using a volume to **/dev/random** on the container.
+
+For more information take a look at metalink document 1997349.1, [Using the Random Number Generator](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/sect-Security_Guide-Encryption-Using_the_Random_Number_Generator.html) and [Stack Overflow](http://stackoverflow.com/questions/26021181/not-enough-entropy-to-support-dev-random-in-docker-containers-running-in-boot2d).

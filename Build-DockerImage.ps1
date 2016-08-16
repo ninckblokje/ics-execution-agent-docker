@@ -24,4 +24,4 @@ docker build -t ninckblokje/icsea-ph1:$ImageVersion icsea
 
 Write-Host Running install
 
-echo docker run -it -v /$DockerPwd/files:/tmp/files $TempFileVolumes ninckblokje/icsea-ph1:$ImageVersion bash
+Invoke-Expression "docker run -it -v /dev/urandom:/dev/random -v /$DockerPwd/files:/tmp/files $TempFileVolumes ninckblokje/icsea-ph1:$ImageVersion bash"

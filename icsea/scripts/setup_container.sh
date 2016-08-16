@@ -25,12 +25,15 @@
 
 INSTALL_DIR=/tmp/icsea
 
+# add user oracle:dba
 groupadd dba
 useradd -d /home/oracle -g dba -G wheel -m -s /bin/bash oracle
 
+# update and install software
 yum -y update
 yum -y install tar unzip sudo
 
+# give users belonging to the group wheel sudo rights without password
 echo '%wheel ALL=(ALL)       NOPASSWD: ALL' >> /etc/sudoers
 
 mkdir -p $INSTALL_DIR
