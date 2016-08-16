@@ -1,0 +1,1 @@
+docker build -t ninckblokje/icsea:160506.1920 .
