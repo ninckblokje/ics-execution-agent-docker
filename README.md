@@ -70,7 +70,7 @@ The Oracle software itself is not installed while building the container (since 
 
 Running the container can be done easily using this command:
 
-    $ docker run Invoke-Expression "docker run -it -v /dev/urandom:/dev/random  ninckblokje/icsea:$ImageVersion /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh"
+    $ Invoke-Expression "docker run -it -v /dev/urandom:/dev/random  ninckblokje/icsea:$ImageVersion /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh"
 
 ## Save install files
 
