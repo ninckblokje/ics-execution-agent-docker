@@ -1,5 +1,7 @@
 # Docker image for Integration Cloud Execution Agent
 
+!! This Docker container is of early beta quality !!
+
 This project provides the sources to build a Docker image for the Execution Agent of the Oracle Integration Cloud. The main setup file must be downloaded manually before the image can be build.
 
 During the creation of the Docker image to the main setup file is executed and will download additional setup files. Because of this the build process will take quite some time.
@@ -53,13 +55,22 @@ Create the file **ics.conf** based upon the file **ics.conf.example** in the **c
 
 If you build the Docker image on Windows make sure that the Docker VM has 5 GB or more RAM!
 
-On Windows a PowerShell script will build the container:
+On Windows a PowerShell script will build the container, but will not tag it:
 
     $ .\Build-DockerContainer.ps1 
 
+The container must be tagged manually. First retrieve the container id, then tag it:
+
+    $ docker ps -a
+    $ docker commit [CONTAINER_ID] ninckblokje/icsea:160506.192
+
+The Oracle software itself is not installed while building the container (since sending the multi gigabyte binaries to the daemon will take quite some time). But is installed in the first run (which is done by the script **Build-DockerContainer.ps1**). The build step will generate a container image named **ninckblokje/icsea-base**.
+
 ## Run the container
 
+Running the container can be done easily using this command:
 
+    $ docker run Invoke-Expression "docker run -it -v /dev/urandom:/dev/random  ninckblokje/icsea:$ImageVersion /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh"
 
 ## Save install files
 

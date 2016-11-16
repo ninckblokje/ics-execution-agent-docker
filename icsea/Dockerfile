@@ -32,7 +32,3 @@ RUN /tmp/scripts/setup_container.sh
 USER oracle
 
 EXPOSE 5004 7001 7002 7453
-
-#RUN /tmp/install_execution_agent.sh
-
-#ENTRYPOINT /home/oracle/icsea/ICSOP/data/user_projects/domains/compact_domain/bin/startWebLogic.sh
